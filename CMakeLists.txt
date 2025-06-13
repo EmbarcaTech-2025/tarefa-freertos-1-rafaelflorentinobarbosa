@@ -1,3 +1,5 @@
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 # == DO NOT EDIT THE FOLLOWING LINES for the Raspberry Pi Pico VS Code Extension to work ==
 if(WIN32)
     set(USERHOME $ENV{USERPROFILE})
@@ -36,12 +38,16 @@ project(embarcatech-freertos-tarefa-1 C CXX ASM)
 pico_sdk_init()
 
 add_executable(embarcatech-freertos-tarefa-1
-    main.c
+    app/main.c
+    hal/buttons.c
+    hal/led.c
+    hal/buzzers.c
 )
 
 target_include_directories(embarcatech-freertos-tarefa-1 PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}
-    ${CMAKE_CURRENT_LIST_DIR}/include
+        ${CMAKE_CURRENT_LIST_DIR}/include
+        ${CMAKE_CURRENT_LIST_DIR}/hal
 )
 
 target_link_libraries(embarcatech-freertos-tarefa-1 
